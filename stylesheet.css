@@ -292,14 +292,21 @@ header .login-div .user_a
 	color: black;
 }
 
-/* .landing {
-  box-sizing: border-box;
-  color: white;
-  text-align: right;
-  float: left;
-  width: 50%;
-  padding: 5px;
-  content: "";
-  clear: both;
-  display: table;
-} */
+
+
+/*user_home.php styling*/
+.modify-user
+{
+	width: 100%;
+	height: 50px;
+	background-color: lightgrey;
+}
+
+.modify-user a
+{
+	width: 8%;
+	height: 100%;
+	background-color: gray;
+	color: whitesmoke;
+	border: none;
+}

@@ -2,6 +2,7 @@
 	if (isset($_POST['submit'])) 
 	{
 		include_once 'dbh.inc.php';
+
 		$first = $_POST['first'];
 		$last = $_POST['last'];
 		$email = $_POST['email'];
@@ -29,9 +30,13 @@
 				}
 				else
 				{
-					$sql = "SELECT * FROM users WHERE user_uid='$uid'";
-					$res = mysqli_query($conn, $sql);
-					$resCheck = mysqli_num_rows($res);
+					$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
+					/* $res = mysqli_query($conn, $sql);
+					$resCheck = mysqli_num_rows($res); */
+
+					$stmt = $conn->prepare($sql);
+					$stmt->execute();
+					$resCheck = $stmt->fetchColumn();
 					if ($resCheck > 0)
 					{
 						header("Location: ../signup.php?signup=invalid-username");
@@ -41,7 +46,15 @@
 					{
 						$hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
 						$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashpwd');";
-						mysqli_query($conn, $sql);
+						try
+						{
+							$conn->exec($sql);
+							echo "new record created successfully";
+						}
+						catch(PDOException $e)
+    					{
+							echo $sql . "<br>" . $e->getMessage();
+						}
 						header("Location: ../signup.php?signup=success");
 						exit();
 					}
@@ -51,6 +64,6 @@
 	}
 	else
 	{
-		header("Location: ../signup.php");
+		header("Location: ../index.php");
 		exit(); 
 	} 
