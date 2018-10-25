@@ -175,6 +175,8 @@ header .login-div form input {
 	padding: 0px 10px;
 	margin-right: 10px;
 	border: none;
+	border-radius: 23px;
+	text-align: center;
 	background-color: whitesmoke;
 	font-family: 'Times New Roman';
 	font-size: 14px;
@@ -188,6 +190,7 @@ header .login-div form button {
 	height: 30px;
 	margin-right: 10px;
 	border: none;
+	border-radius: 23px;
 	background-color: coral;
 	font-family: 'Times New Roman';
 	font-size: 14px;
@@ -205,6 +208,7 @@ header .login-div a {
 	width: 60px;
 	height: 60px;
 	border: none;
+	border-radius: 23px;
 	float: left;
 	background-color: coral;
 	font-family: 'Times New Roman';
@@ -225,6 +229,7 @@ header .login-div .user_a
 	height: 60px;
 	margin-top: -15px;
 	border: none;
+	border-radius: 23px;
 	float: left;
 	background-color: coral;
 	font-family: 'Times New Roman';
@@ -244,7 +249,7 @@ header .login-div .user_a
 }
 
 .header-container h2 {
-	font-family: Helvetica;
+	font-family: 'Times New Roman';;
 	text-decoration: overline;
 	font-size: 50px;
 	color: coral;
@@ -266,6 +271,7 @@ header .login-div .user_a
 	padding: 0px 5%;
 	margin-bottom: 4px;
 	border: none;
+	border-radius: 23px;
 	background-color: whitesmoke;
 	font-family: 'Times New Roman';
 	font-size: 16px;
@@ -279,6 +285,7 @@ header .login-div .user_a
 	height: 30px;
 	margin: 0 auto;
 	border: none;
+	border-radius: 23px;
 	background-color: grey;
 	font-family: 'Times New Roman';
 	font-size: 14px;
@@ -297,16 +304,108 @@ header .login-div .user_a
 /*user_home.php styling*/
 .modify-user
 {
-	width: 100%;
-	height: 50px;
-	background-color: lightgrey;
+	width: 95%;
+	height: 35px;
+	border: 1px solid black;
+	margin-left: 50px;
+	margin-top: 20px;
 }
 
 .modify-user a
 {
-	width: 8%;
+	width: 300px;
 	height: 100%;
+	background-color: coral;
+	color: black;
+	font-size: 30px;
+	float: left;
+	border-radius: 23px;
+	text-align: center;
+	font-family: 'Times New Roman';
+}
+
+.modify-user a:hover
+{
 	background-color: gray;
-	color: whitesmoke;
+	color: coral;
+	text-decoration: underline;
+}
+
+
+
+/*change_details.php styling*/
+.change-form
+{
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 150px;
+}
+
+.change-form a
+{
+	width: 100%;
+	height: 35px;
+	margin-top: 50px;
+	background-color: grey;
+	color: black;
+	font-size: 30px;
+	float: left;
 	border: none;
+	border-radius: 23px;
+	text-align: center;
+	font-family: 'Times New Roman';
+}
+
+.change-form a:hover
+{
+	background-color: coral;
+	text-decoration: underline;
+}
+
+
+
+/*change_username.php*/
+.user-form
+{
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 180px;
+}
+
+.user-form input
+{
+	width: 90%;
+	height: 4 0px;
+	padding: 0px 5%;
+	margin-bottom: 4px;
+	border: none;
+	text-align: center;
+	border-radius: 23px;
+	background-color: whitesmoke;
+	font-family: 'Times New Roman';
+	font-size: 16px;
+	color: #111;
+	line-height: 40px;
+}
+
+.user-form button {
+	display: block;
+	width: 30%;
+	height: 30px;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: none;
+	border-radius: 23px;
+	background-color: grey;
+	font-family: 'Times New Roman';
+	font-size: 14px;
+	color: whitesmoke;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.user-form button:hover
+{
+	background-color: coral;
+	color: black;
 }

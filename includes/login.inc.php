@@ -14,13 +14,12 @@ if (isset($_POST['submit']))
 	}
 	else
 	{
+		
 		$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
-		/*$res = mysqli_query($conn, $sql);
-		$resCheck = mysqli_num_rows($res); */
-
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$resCheck = $stmt->fetchColumn();
+
 		if ($resCheck == 0)
 		{
 			header("Location: ../signup.php?login=error");

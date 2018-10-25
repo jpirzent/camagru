@@ -4,7 +4,7 @@
 	?>
 	<section class="header-container">
 		<div class="header-bar">
-			<h2>_Home</h2>
+			<h2>User_Home</h2>
 		</div>
 	</section>
 	<div class="modify-user">

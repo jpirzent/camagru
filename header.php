@@ -31,7 +31,7 @@
 					else
 					{
 						echo '<form action="includes/login.inc.php" method="POST">
-								<input type="text" name="uid" placeholder="username/e-mail">
+								<input type="text" name="uid" placeholder="username">
 								<input type="password" name="pwd" placeholder="password">
 								<button type="submit" name="submit">Login</button>
 								</form>
