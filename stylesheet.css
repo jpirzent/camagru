@@ -205,10 +205,10 @@ header .login-div form button:hover {
 
 header .login-div a {
 	display: block;
-	width: 60px;
+	width: 120px;
 	height: 60px;
+
 	border: none;
-	border-radius: 23px;
 	float: left;
 	background-color: coral;
 	font-family: 'Times New Roman';
@@ -405,6 +405,104 @@ header .login-div .user_a
 }
 
 .user-form button:hover
+{
+	background-color: coral;
+	color: black;
+}
+
+
+
+
+/*verify_account.php styling*/
+.verify-div
+{
+	width: 404px;
+	height: 45px;
+	margin-left: 750px;
+	margin-top: 200px;
+}
+
+.verify-div a
+{
+	width: 500px;
+	height: 200px;
+	background-color: coral;
+	color: black;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px; 
+	font-size: 40px;
+	float: center;
+	border-radius: 15px;
+	text-align: center;
+	font-family: 'Times New Roman';
+}
+
+.verify-div a:hover
+{
+	background-color: gray;
+	color: coral;
+}
+
+.verify-div p
+{
+	width: 500px;
+	height: 40px;
+	background-color: coral;
+	padding-top: 5px;
+	margin-left: -40px;
+	color: black;
+	font-size: 30px;
+	float: center;
+	border-radius: 15px;
+	text-align: center;
+	font-family: 'Times New Roman';
+}
+
+
+
+/*forgot_pwd.php styling*/
+.forgot-form
+{
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 180px;
+}
+
+.forgot-form input
+{
+	width: 90%;
+	height: 4 0px;
+	padding: 0px 5%;
+	margin-bottom: 4px;
+	border: none;
+	text-align: center;
+	border-radius: 23px;
+	background-color: whitesmoke;
+	font-family: 'Times New Roman';
+	font-size: 16px;
+	color: #111;
+	line-height: 40px;
+}
+
+.forgot-form button {
+	display: block;
+	width: 55%;
+	height: 30px;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: none;
+	border-radius: 23px;
+	background-color: grey;
+	font-family: 'Times New Roman';
+	font-size: 14px;
+	color: whitesmoke;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.forgot-form button:hover
 {
 	background-color: coral;
 	color: black;

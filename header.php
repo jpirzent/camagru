@@ -35,6 +35,7 @@
 								<input type="password" name="pwd" placeholder="password">
 								<button type="submit" name="submit">Login</button>
 								</form>
+								<a href="forgot_pwd.php">Forgot_Password?</a>
 								<a href="signup.php">Sign Up</a>';
 					}
 				?>

@@ -17,6 +17,7 @@
 		}
 		else
 		{
+
 			$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$olduid'";
 			$stmt = $conn->prepare($sql);
 			$stmt->execute();
@@ -29,6 +30,7 @@
 			}
 			else
 			{
+
 				try
 				{
 					$sql = "SELECT * FROM users WHERE user_uid='$olduid'";
@@ -43,7 +45,7 @@
 				if ($row)
 				{
 					$hashpwdcheck = password_verify($pwd, $row['user_pwd']);
-					if ($hashpwdcheck = FALSE)
+					if ($hashpwdcheck == FALSE)
 					{
 						header("Location: ../change_username.php?change=incorrectpassword");
 						exit();
@@ -53,6 +55,7 @@
 						$sql = "UPDATE users SET user_uid='$newuid' WHERE user_uid='$olduid'";
 						$stmt = $conn->prepare($sql);
 						$stmt->execute();
+						$_SESSION['uid'] = $newuid;
 						header("Location: ../change_username.php?change=successfull");
 						exit();
 					}

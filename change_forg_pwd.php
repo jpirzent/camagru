@@ -3,9 +3,12 @@
 ?>
 <section class="header-container">
 	<div class="header-bar">
-		<h2>Home</h2>
+		<h2>Change_Password</h2>
 	</div>
 </section>
+
+
+
 <?php
 	include_once 'footer.php';
 ?>
