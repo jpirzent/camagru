@@ -57,7 +57,6 @@
 						$head = "MIME-Version: 1.0" . "\r\n";
 						$head .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 						mail($email, $subject, $msg, $head);
-						$_SESSION['sent_email'] = 1;
 						header("Location: ../index.php?email-sent");
 						exit();
 					}
