@@ -31,8 +31,6 @@
 				else
 				{
 					$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
-					/* $res = mysqli_query($conn, $sql);
-					$resCheck = mysqli_num_rows($res); */
 
 					$stmt = $conn->prepare($sql);
 					$stmt->execute();
@@ -44,19 +42,45 @@
 					}
 					else
 					{
-						$hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
-						$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$first', '$last', '$email', '$uid', '$hashpwd');";
-						try
+						if (preg_match( '~[A-Z]~', $pwd) && preg_match( '~[a-z]~', $pwd) && preg_match( '~\d~', $pwd) && (strlen( $pwd) > 8))
 						{
-							$conn->exec($sql);
-							echo "new record created successfully";
+							$hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
+							$key = mt_rand(1000,9999);
+							$key .= $uid;
+							$hkey = hash('whirlpool', $key);
+							$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd, user_key) VALUES ('$first', '$last', '$email', '$uid', '$hashpwd', '$hkey');";
+							try
+							{
+								$conn->exec($sql);
+								echo "new record created successfully";
+							}
+							catch(PDOException $e)
+							{
+								echo $sql . "<br>" . $e->getMessage();
+							}
+							$subject = "Account Verification";
+							$msg = "
+							<html>
+							<head>
+							<title>Camagru Account Verification</title>
+							</head>
+							<body>
+							<p>Please follow the link bellow to Verify your Account</p><br />
+							<a href='http://localhost:8080/camagru/includes/verify.inc.php?key=".$hkey."'>Verify Account</a>
+							</body>
+							</html>
+							";
+							$head = "MIME-Version: 1.0" . "\r\n";
+							$head .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+							mail($email, $subject, $msg, $head);
+							header("Location: ../index.php?signup=success");
+							exit();
 						}
-						catch(PDOException $e)
-    					{
-							echo $sql . "<br>" . $e->getMessage();
+						else
+						{
+							header("Location: ../signup.php?signup=invalidpassword");
+							exit();
 						}
-						header("Location: ../signup.php?signup=success");
-						exit();
 					}
 				}
 			}

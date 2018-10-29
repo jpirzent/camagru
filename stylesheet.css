@@ -507,3 +507,38 @@ header .login-div .user_a
 	background-color: coral;
 	color: black;
 }
+
+
+
+
+
+/*preferences.php styling*/
+.preferences-form
+{
+	width: 400px;
+	margin: 0 auto;
+	padding-top: 180px;
+}
+
+.preferences-form button
+{
+	display: block;
+	width: 95%;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 10px;
+	border: none;
+	border-radius: 23px;
+	background-color: grey;
+	font-family: 'Times New Roman';
+	font-size: 30px;
+	color: coral;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.preferences-form button:hover
+{
+	background-color: coral;
+	color: black;
+}

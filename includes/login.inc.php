@@ -22,7 +22,7 @@ if (isset($_POST['submit']))
 
 		if ($resCheck == 0)
 		{
-			header("Location: ../signup.php?login=error");
+			header("Location: ../signup.php?login=UnkownUser");
 			exit();
 		}
 		else
@@ -43,17 +43,23 @@ if (isset($_POST['submit']))
 				$hashpwdcheck = password_verify($pwd, $row['user_pwd']);
 				if ($hashpwdcheck == FALSE)
 				{
-					header("Location: ../index.php?login=error");
+					header("Location: ../index.php?login=invalid_pwd");
 					exit();
 				}
 				else if ($hashpwdcheck == TRUE)
 				{
+					if ($row['user_verified'] == 0)
+					{
+						header("Location: ../index.php?login=account_unverified");
+						exit();
+					}
 					$_SESSION['u_id'] = $row['user_id'];
 					$_SESSION['u_first'] = $row['user_first'];
 					$_SESSION['u_last'] = $row['user_last'];
 					$_SESSION['u_email'] = $row['user_email'];
 					$_SESSION['u_uid'] = $row['user_uid'];
-					$_SESSION['verify'] = $row['user_verified'];
+					$_SESSION['u_verify'] = $row['user_verified'];
+					$_SESSION['u_notif'] = $row['user_notif'];
 					header("Location: ../index.php?login=success");
 					exit();
 				}
@@ -63,7 +69,7 @@ if (isset($_POST['submit']))
 }
 else
 {
-	header("Location: ../index.php?login=error");
+	header("Location: ../index.php?login=post_not_set");
 	exit();
 }
 ?>

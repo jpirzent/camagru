@@ -9,7 +9,7 @@
 	</section>
 	<div class="modify-user">
 		<a href="change_details.php">Modify Details</a>
-		<a href="verify_account.php">Verify Account</a>
+		<a href="preferences.php">Preferences</a>
 	</div>
 	<?php
 		include_once 'footer.php';

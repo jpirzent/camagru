@@ -2,13 +2,10 @@
 
 	include_once 'dbh.inc.php';
 
-	session_start();
-	if (isset($_SESSION['u_uid']) && isset($_SESSION['u_email']) && $_SESSION['sent_email'] == 1)
+	if (isset($_GET['key']))
 	{
-		$uid = $_SESSION['u_uid'];
-
-
-		$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
+		$key = $_GET['key'];
+		$sql = "SELECT COUNT(*) FROM users WHERE user_key='$key'";
 		$stmt = $conn->prepare($sql);
 		$stmt->execute();
 		$resCheck = $stmt->fetchColumn();
@@ -22,7 +19,7 @@
 		{
 			try
 			{
-				$sql = "SELECT * FROM users WHERE user_uid='$uid'";
+				$sql = "SELECT * FROM users WHERE user_key='$key'";
 				$check = $conn->prepare($sql);
 				$check->execute();
 				$row = $check->fetch(PDO::FETCH_ASSOC);
@@ -33,19 +30,17 @@
 			}
 			if ($row)
 			{
-				$sql = "UPDATE users SET user_verified='1' WHERE user_uid='$uid'";
+				$sql = "UPDATE users SET user_verified='1' WHERE user_key='$key'";
 				$stmt = $conn->prepare($sql);
 				$stmt->execute();
-				$_SESSION['verify'] = 1;
-				header("Location: ../signup.php?verification=success");
+				header("Location: ../index.php?verification=success");
 				exit();
 			}
 		}
 	}
 	else
 	{
-		//header("Location: ../index.php?login-error");
-		echo "uid = ".$_SESSION['u_uid']."<br>email = ".$_SESSION['u_email']."<br>";
+		header("Location: ../index.php?login-error");
 		exit();
 	}
 
