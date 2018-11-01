@@ -542,3 +542,95 @@ header .login-div .user_a
 	background-color: coral;
 	color: black;
 }
+
+#video
+{
+	display: block;
+	margin-left: 30px;
+	transform: scale(-1, 1);
+}
+
+#canvas
+{
+	display: block;
+	margin-left: 30px;
+	transform: scale(-1, 1);
+}
+
+
+.video-class
+{
+	width: 700px;
+	height: 525px;
+	margin-left: 600px;
+	margin-top: 100px;
+	background-color: coral;
+}
+
+.video-class input
+{
+	width: 200px;
+	height: 40px;
+	margin-top: 5px;
+	border: none;
+	background-color: black;
+	font-family: 'Times New Roman';
+	font-size: 30px;
+	color: coral;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.video-class input:hover
+{
+	background-color: coral;
+	color: black;
+}
+
+
+
+.webcam-error
+{
+	margin-top: 150px;
+	background-color: #454545;
+	color: coral;
+	text-align: center;
+	font-family: 'Times New Roman';
+	font-size: 30px;
+	text-decoration: underline;
+}
+
+.upload-form
+{
+	width: 500px;
+	height: 400px;
+	background-color: coral;
+	margin-left: 725px;
+	margin-top: 20px;
+	font-family: 'Times New Roman';
+	font-size: 30px;
+	text-align: center;
+	text-decoration: underline;
+	color: #454545;
+}
+
+.upload-form input
+{
+	width: 200px;
+	text-decoration: none;
+	border: none;
+	display: block;
+	background-color: coral;
+	color: black;
+	cursor: pointer;
+	font-family: 'Times New Roman';
+	font-size: 18px;
+	margin-left: 150px;
+	margin-top: 150px;
+}
+
+.upload-form input:hover
+{
+	background-color: grey;
+	color: coral;
+}
