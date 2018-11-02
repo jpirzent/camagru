@@ -2,7 +2,7 @@
 
 	session_start();
 
-	if (isset($_POST['submit']))
+	if (isset($_POST['submit']) && isset($_SESSION['u_uid']))
 	{
 		include_once 'dbh.inc.php';
 
@@ -17,7 +17,8 @@
 			$img = $_FILES['image']['tmp_name'];
 			$imgcont = addslashes(file_get_contents($img));
 			$datatime = date("Y-m-d H:i:s");
-			$sql = "INSERT into images (image, created) VALUES ('$imgcont', '$datatime')";
+			$uid = $_SESSION['u_uid'];
+			$sql = "INSERT into images (image_img, image_created, image_uid) VALUES ('$imgcont', '$datatime', '$uid')";
 			$conn->exec($sql);
 			header("Location: ../index.php?image_upload=successful");
 			exit();

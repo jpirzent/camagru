@@ -634,3 +634,49 @@ header .login-div .user_a
 	background-color: grey;
 	color: coral;
 }
+
+
+
+/*gallery.php styling*/
+.gallery-img
+{
+	width: 450px;
+	height: 450px;
+	margin-left: 725px;
+	margin-top: 20px;
+}
+
+.gallery-h1
+{
+	font-family: 'Times New Roman';;
+	text-decoration: overline;
+	font-size: 45px;
+	color: coral;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.gallery-date
+{
+	color: coral;
+	margin-top: 5px;
+	margin-left: 1200px;
+	font-size: 20px;
+}
+
+.gallery-hr
+{
+	background-color: coral;
+	border-color: coral;
+	width: 90%;
+	margin-left: 100px;
+}
+
+.gallery-upvote
+{
+	float: right;
+	width: 60px;
+	height: 60px;
+	margin-top: -300px;
+	margin-right: 600px;
+}
