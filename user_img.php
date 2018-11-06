@@ -44,16 +44,10 @@
 				$likes = $row1;
 			}
 
-			echo '<h1 class="gallery-h1">'.$imgName.'</h1>';
-			echo '<a href="view_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'"></a>';
+            echo '<img class="user-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'">';
+            echo '<a href="includes/delete_picture.inc.php?img='.$imgID.'" class="delete-button">Delete Post</a>';
 			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
-			echo '<a href="includes/upvote.inc.php?image='.$imgID.'"><img src="imgs/upvote.png" alt="Upvote" title="Upvote" class="gallery-upvote"></a>';
 			echo '<p class="gallery-date">no. of Likes: '.$likes.'</p>';
-			echo '<form action="includes/submit_comment.inc.php" id="comment-form" class="comment-form" method="post">';
-			echo '<textarea name="comment" form="comment-form" placeholder="Enter Your Comment Here"></textarea>';
-			echo "<input type='hidden' value='$imgID' name='image'>";
-			echo '<input type="submit">';
-			echo '</form>';
 			echo '<div class="comment-layout">';
 
 			foreach ($row2 as $result)
@@ -73,7 +67,6 @@
 	}
 
 ?>
-
 <?php
 	include_once 'footer.php';
 ?>

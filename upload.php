@@ -8,9 +8,11 @@
 
 <form action="includes/upload.inc.php" method="post" enctype="multipart/form-data" class="upload-form">
 Select an image to upload
-	<input type="file" name="image">
+	<input type="file" name="image" id="upload" onchange="displayimg(event)">
 	<input type="submit" name="submit" value="UPLOAD">
 </form>
+
+<img id="myimage" class="gallery-img">
 
 </section>
 <?php

@@ -543,6 +543,9 @@ header .login-div .user_a
 	color: black;
 }
 
+
+
+/*webcam.php styling*/
 #video
 {
 	display: block;
@@ -557,13 +560,12 @@ header .login-div .user_a
 	transform: scale(-1, 1);
 }
 
-
 .video-class
 {
 	width: 700px;
-	height: 525px;
+	height: 550px;
 	margin-left: 600px;
-	margin-top: 100px;
+	margin-top: 50px;
 	background-color: coral;
 }
 
@@ -587,8 +589,6 @@ header .login-div .user_a
 	color: black;
 }
 
-
-
 .webcam-error
 {
 	margin-top: 150px;
@@ -600,6 +600,66 @@ header .login-div .user_a
 	text-decoration: underline;
 }
 
+.overlay-imgs
+{
+	width: 50%;
+	height: 200px;
+	background-color: coral;
+	margin-left: 476.25px;
+	margin-top: 20px;
+}
+
+.overlay-imgs img
+{
+	width: 150px;
+	height: 150px;
+	margin-left: 125px;
+}
+
+
+.overlay-imgs h1
+{
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Times New Roman';
+	text-decoration: overline;
+	padding-top: 5px;
+}
+
+.previous-imgs
+{
+	width: 200px;
+	background-color: coral;
+	float: right;
+	margin-right: 300px;
+	margin-top: -500px;
+}
+
+.previous-imgs img
+{
+	width: 150px;
+	height: 150px;
+	margin-left: 25px;
+	margin-top: 15px;
+}
+
+.previous-imgs h1
+{
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Times New Roman';
+	text-decoration: overline;
+	padding-top: 5px;
+}
+
+
+
+
+
+
+
+
+/*upload.php styling*/
 .upload-form
 {
 	width: 500px;
@@ -637,22 +697,23 @@ header .login-div .user_a
 
 
 
-/*gallery.php styling*/
+/*index.php styling*/
 .gallery-img
 {
 	width: 450px;
 	height: 450px;
 	margin-left: 725px;
 	margin-top: 20px;
+	border: none;
 }
 
 .gallery-h1
 {
 	font-family: 'Times New Roman';;
 	text-decoration: overline;
-	font-size: 45px;
+	font-size: 30px;
 	color: coral;
-	margin-top: 10px;
+	margin-top: 50px;
 	text-align: center;
 }
 
@@ -679,4 +740,127 @@ header .login-div .user_a
 	height: 60px;
 	margin-top: -300px;
 	margin-right: 600px;
+}
+
+
+/*view_img.php styling*/
+.comment-form
+{
+	background-color: coral;
+	width: 900px;
+	height: 125px;
+	margin-left: 500px;
+	margin-top: 10px;
+}
+
+.comment-form input
+{
+	width: 200px;
+	text-decoration: none;
+	border: none;
+	display: block;
+	background-color: coral;
+	color: black;
+	cursor: pointer;
+	font-family: 'Times New Roman';
+	font-size: 18px;
+	margin-left: 350px;
+	margin-top: 25px;
+}
+
+.comment-form input:hover
+{
+	background-color: #454545;
+	color: coral;
+}
+
+.comment-form textarea
+{
+	margin-left: 60px;
+	margin-top: 10px;
+	font-family: 'Times New Roman';
+	font-size: 18px;
+	width: 771px;
+	height: 50px;
+	border: none;
+	background-color: whitesmoke;
+}
+
+.comment-layout
+{
+	background-color: gray;
+	width: 900px;
+	margin-left: 500px;
+	margin-top: 20px;
+}
+
+.comment-layout h1
+{
+	padding-top: 15px;
+	padding-left: 25px;
+	text-decoration: overline;
+	font-size: 20px;
+	font-family: 'Times New Roman';
+	color: coral;
+}
+
+.comment-layout p
+{
+	padding-top: 5px;
+	padding-left: 25px;
+	font-family: 'Times New Roman';
+	padding-bottom: 10px;
+}
+
+
+
+
+/*footer.php styling*/
+.footer-hr
+{
+	background-color: black;
+	border: none;
+	width: 100%;
+	height: 5px;
+	margin-top: 200px;
+}
+
+.footer-bq
+{
+	text-align: right;
+	font-style: italic;
+	color: coral;
+	text-decoration: underline;
+	padding-top: 5px;
+	padding-bottom: 15px;
+	padding-right: 20px;
+	font-size: 20px;
+	text-decoration-color: black;
+}
+
+
+
+
+/*user_img.php styling*/
+.user-img
+{
+	width: 500px;
+	height: 500px;
+	margin-left: 400px;
+	margin-top: 20px;
+	border: none;
+}
+
+.delete-button
+{
+	font-size: 30px;
+	color: coral;
+	margin-left: 50px;
+}
+
+.delete-button:hover
+{
+	background-color: coral;
+	color: #454545;
+	padding: 3px 3px 3px 3px;
 }

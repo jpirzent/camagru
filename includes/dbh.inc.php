@@ -10,9 +10,9 @@ try
 	$conn = new PDO("mysql:host=$DB_DSN", $DB_USER, $DB_PASSWORD);
 	$conn->query("use `$DB_NAME`");
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//	echo "connected succesfully";
+	//echo "connected succesfully";
 }
 catch (PDOException $var)
 {
-//	echo $var->getMessage();
+	echo $var->getMessage();
 }

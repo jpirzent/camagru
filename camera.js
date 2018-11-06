@@ -37,7 +37,7 @@ function click()
 		}
 	}
 
-	img.style.display = "block";
+	img.style.display = "inline";
 	img.width = video.offsetWidth;
 	img.height = video.offsetHeight;
 	context = img.getContext('2d');
@@ -45,7 +45,7 @@ function click()
 	document.querySelector("#video").style.display = "none";
     document.querySelector("#snap").style.display = "none";
 /*     document.querySelector("#options").style.display = "block";*/
-    document.querySelector("#delete_snap").style.display = "block";
+    document.querySelector("#delete_snap").style.display = "inline";
 }
    
 	
@@ -53,7 +53,34 @@ function cancel_click()
 {
 	document.querySelector("#canvas").style.display = "none";
     /*document.querySelector("#options").style.display = "none";*/
-    document.querySelector("#video").style.display = "block";
-    document.querySelector("#snap").style.display = "block";
+    document.querySelector("#video").style.display = "inline";
+    document.querySelector("#snap").style.display = "inline";
     document.querySelector("#delete_snap").style.display = "none";
+}
+
+
+function save_img()
+{
+	var canvas = document.getElementById("canvas");
+	var dataURL = canvas.toDataURL("img/png");
+	
+	document.getElementById('hidden-data').value = dataURL;
+	var fd = new FormData(document.forms["save_img-form"]);
+
+	xhr = new XMLHttpRequest();
+	xhr.open('POST', 'includes/save.inc.php');
+
+	xhr.upload.onprogress = function(e) {
+		if (e.lengthComputable) {
+			var percentComplete = (e.loaded / e.total) * 100;
+			console.log(percentComplete + '% uploaded');
+			alert('Succesfully uploaded');
+		}
+	};
+
+	xhr.onload = function()
+	{
+		console.log("loading...");
+	};
+	xhr.send(fd);
 }

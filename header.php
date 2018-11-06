@@ -9,6 +9,7 @@
 	<title>Camagru</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+	<script src="./display-image.js" type="text/javascript"></script>
 </head>
 <body>
 	
@@ -17,11 +18,11 @@
 		<div class="header-bar">
 			<ul>
 				<li><a href="index.php">_Home_</a></li>
-				<li><a href="gallery.php">_Gallery_</a></li>
 				<?php
 					if (isset($_SESSION['u_id']))
 					{
 						echo '<li><a href="upload.php">_Upload_</a></li>';
+						echo '<li><a href="Webcam.php">_Webcam_</a></li>';
 					}
 				?>
 			</ul>
