@@ -33,7 +33,8 @@
 			$imgData = $row['image_img'];
 			$imgDate = $row['image_created'];
 			$imgID = $row['image_id'];
-			echo '<a href="user_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'"></a>';
+			$img = str_replace(" ", "+", $imgData);
+			echo '<a href="user_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/jpeg;base64,'.$img.'"></a>';
 			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
 			echo '<hr class="gallery-hr">';	
 		}

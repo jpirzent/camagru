@@ -34,7 +34,7 @@
 			$imgData = $row['image_img'];
 			$imgName = $row['image_uid'];
 			$imgDate = $row['image_created'];
-
+			$img = str_replace(" ", "+", $imgData);
 			if ($row1 == 0)
 			{
 				$likes = 0;
@@ -45,7 +45,7 @@
 			}
 
 			echo '<h1 class="gallery-h1">'.$imgName.'</h1>';
-			echo '<a href="view_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'"></a>';
+			echo '<img class="gallery-img" src="data:image/jpeg;base64,'.$img.'">';
 			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
 			echo '<a href="includes/upvote.inc.php?image='.$imgID.'"><img src="imgs/upvote.png" alt="Upvote" title="Upvote" class="gallery-upvote"></a>';
 			echo '<p class="gallery-date">no. of Likes: '.$likes.'</p>';

@@ -34,6 +34,7 @@
 			$imgData = $row['image_img'];
 			$imgName = $row['image_uid'];
 			$imgDate = $row['image_created'];
+			$img = str_replace(" ", "+", $imgData);
 
 			if ($row1 == 0)
 			{
@@ -44,7 +45,7 @@
 				$likes = $row1;
 			}
 
-            echo '<img class="user-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'">';
+            echo '<img class="user-img" src="data:image/jpeg;base64,'.$img.'">';
             echo '<a href="includes/delete_picture.inc.php?img='.$imgID.'" class="delete-button">Delete Post</a>';
 			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
 			echo '<p class="gallery-date">no. of Likes: '.$likes.'</p>';

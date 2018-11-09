@@ -57,15 +57,21 @@
 	</div>
 <div class="overlay-imgs">
 	<h1>Filters</h1>
-	<img src="./imgs/cigarette.png" alt="cig" title="cigarette">
-	<img src="./imgs/hat.png" alt="hat" title="hat">
-	<img src="./imgs/glasses.png" alt="glasses" title="glasses">
+	<button onclick="display_img(1)"><img src="./imgs/cigarette.png" alt="cig" title="cigarette"></button>
+	<button onclick="display_img(2)"><img src="./imgs/hat.png" alt="hat" title="hat"></button>
+	<button onclick="display_img(3)"><img src="./imgs/glasses.png" alt="glasses" title="glasses"></button>
 </div>
+
+
+
 <?php
 
 	if (isset($_SESSION['u_id']))
 	{
 		echo '<div class="video-class">
+			<img src="./imgs/cigarette.png" alt="cig" title="cigarette" class="img-cig" id="cig">
+			<img src="./imgs/hat.png" alt="hat" title="hat" class="img-hat" id="hat">
+			<img src="./imgs/glasses.png" alt="glasses" title="glasses" class="img-glasses" id="glasses">
 			<video id="video" width="640" height="480">Video is Loading</video>
 			<canvas id="canvas" style="display:none;" width="640" height="480">Canvas Is Loading</canvas>
 			<input type="button" value="Take the Shot!!" id="snap">
@@ -82,9 +88,6 @@
 	
 
 ?>
-<form method="post" name="save_img-form">
-	<input name="hidden-data" id="hidden-data" type="hidden">
-</form>
 
 
 <div class="previous-imgs">
@@ -103,7 +106,8 @@
 		{
 			$imgData = $row['image_img'];
 			$imgID = $row['image_id'];
-			echo '<a href="view_img.php?image='.$imgID.'"><img src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'"></a>';
+			$img = str_replace(" ", "+", $imgData);
+			echo '<a href="view_img.php?image='.$imgID.'"><img src="data:image/png;base64,'.$img.'"></a>';
 		}
 	}
 

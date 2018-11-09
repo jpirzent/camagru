@@ -15,7 +15,8 @@
 		else
 		{
 			$img = $_FILES['image']['tmp_name'];
-			$imgcont = addslashes(file_get_contents($img));
+			$imgcont = file_get_contents($img);
+			$imgcont = base64_encode($imgcont);
 			$datatime = date("Y-m-d H:i:s");
 			$uid = $_SESSION['u_uid'];
 			$sql = "INSERT into images (image_img, image_created, image_uid) VALUES ('$imgcont', '$datatime', '$uid')";

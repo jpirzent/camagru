@@ -551,6 +551,7 @@ header .login-div .user_a
 	display: block;
 	margin-left: 30px;
 	transform: scale(-1, 1);
+	z-index: 100;
 }
 
 #canvas
@@ -558,6 +559,7 @@ header .login-div .user_a
 	display: block;
 	margin-left: 30px;
 	transform: scale(-1, 1);
+	z-index: 100;
 }
 
 .video-class
@@ -589,6 +591,36 @@ header .login-div .user_a
 	color: black;
 }
 
+.img-cig
+{
+	width: 250px;
+	position: absolute;
+	z-index: 101;
+	margin-left: 125px;
+	margin-top: 240px;
+	display: none;
+}
+
+.img-hat
+{
+	width: 160px;
+	position: absolute;
+	z-index: 101;
+	margin-left: 225px;
+	margin-top: 0px;
+	display: none;
+}
+
+.img-glasses
+{
+	width: 180px;
+	position: absolute;
+	z-index: 101;
+	margin-left: 225px;
+	margin-top: 200px;
+	display: none;
+}
+
 .webcam-error
 {
 	margin-top: 150px;
@@ -612,7 +644,6 @@ header .login-div .user_a
 .overlay-imgs img
 {
 	width: 150px;
-	height: 150px;
 	margin-left: 125px;
 }
 
@@ -626,6 +657,12 @@ header .login-div .user_a
 	padding-top: 5px;
 }
 
+.overlay-imgs button
+{
+	background-color: coral;
+	border: none;
+}
+
 .previous-imgs
 {
 	width: 200px;
@@ -633,6 +670,7 @@ header .login-div .user_a
 	float: right;
 	margin-right: 300px;
 	margin-top: -500px;
+	margin-bottom: 30px;
 }
 
 .previous-imgs img
@@ -662,11 +700,11 @@ header .login-div .user_a
 /*upload.php styling*/
 .upload-form
 {
-	width: 500px;
-	height: 400px;
+	width: 700px;
+	height: 550px;
 	background-color: coral;
-	margin-left: 725px;
-	margin-top: 20px;
+	margin-left: 600px;
+	margin-top: 50px;
 	font-family: 'Times New Roman';
 	font-size: 30px;
 	text-align: center;
@@ -685,7 +723,7 @@ header .login-div .user_a
 	cursor: pointer;
 	font-family: 'Times New Roman';
 	font-size: 18px;
-	margin-left: 150px;
+	margin-left: 225px;
 	margin-top: 150px;
 }
 
@@ -695,6 +733,44 @@ header .login-div .user_a
 	color: coral;
 }
 
+.upload-img
+{
+	width: 450px;
+	height: 450px;
+	border: none;
+	display: block;
+	margin-left: 125px;
+	margin-top: 20px;
+	z-index: 100;
+}
+
+
+.upload-cig
+{
+	width: 250px;
+	margin-left: 125px;
+	margin-top: 240px;
+	position: absolute;
+	z-index: 101;
+}
+
+.upload-hat
+{
+	width: 160px;
+	margin-left: 225px;
+	margin-top: 0px;
+	position: absolute;
+	z-index: 101;
+}
+
+.upload-glasses
+{
+	width: 180px;
+	margin-left: 225px;
+	margin-top: 200px;
+	position: absolute;
+	z-index: 101;
+}
 
 
 /*index.php styling*/

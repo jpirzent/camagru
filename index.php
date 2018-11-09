@@ -24,8 +24,9 @@
         $imgName = $row['image_uid'];
         $imgDate = $row['image_created'];
         $imgID = $row['image_id'];
+        $img = str_replace(" ", "+", $imgData);
         echo '<h1 class="gallery-h1">'.$imgName.'</h1>';
-        echo '<a href="view_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/jpeg;base64,'.str_replace(" ", "+", base64_encode($imgData)).'"></a>';
+        echo '<a href="view_img.php?image='.$imgID.'"><img class="gallery-img" src="data:image/png;base64,'.$img.'"></a>';
         echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
         echo '<hr class="gallery-hr">';
     }
