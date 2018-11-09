@@ -24,7 +24,7 @@ function displayimg(event)
 
 function display_img(num)
 {
-	if (document.querySelector("#canvas").style.display == "inline")
+	if (document.querySelector("#img-upload").style.display == "block")
 	{
 		if (num == 1)
 		{
@@ -38,6 +38,5 @@ function display_img(num)
 		{
 			document.querySelector("#glasses").style.display = "block";
 		}
-		document.querySelector("#save_img").style.display = "inline";
 	}
 }

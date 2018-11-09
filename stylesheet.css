@@ -710,6 +710,7 @@ header .login-div .user_a
 	text-align: center;
 	text-decoration: underline;
 	color: #454545;
+	z-index: 99;
 }
 
 .upload-form input
@@ -744,32 +745,34 @@ header .login-div .user_a
 	z-index: 100;
 }
 
-
 .upload-cig
 {
 	width: 250px;
-	margin-left: 125px;
-	margin-top: 240px;
+	margin-left: 200px;
+	margin-top: 200px;
 	position: absolute;
 	z-index: 101;
+	display: none;
 }
 
 .upload-hat
 {
 	width: 160px;
-	margin-left: 225px;
-	margin-top: 0px;
+	margin-left: 280px;
+	margin-top: 20px;
 	position: absolute;
 	z-index: 101;
+	display: none;
 }
 
 .upload-glasses
 {
 	width: 180px;
-	margin-left: 225px;
-	margin-top: 200px;
+	margin-left: 270px;
+	margin-top: 180px;
 	position: absolute;
 	z-index: 101;
+	display: none;
 }
 
 
