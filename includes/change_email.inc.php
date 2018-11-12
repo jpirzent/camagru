@@ -1,36 +1,44 @@
 <?php
 
-    if (isset($_POST['submit']))
-    {
-        include_once 'dbh.inc.php';
+	if (isset($_POST['submit']))
+	{
+		include_once 'dbh.inc.php';
 
-        $uid = $_POST['uid'];
-        $pwd = $_POST['pwd'];
-        $email = $_POST['email'];
+		$uid = $_POST['uid'];
+		$pwd = $_POST['pwd'];
+		$email = $_POST['email'];
 
-        if (empty($uid) || empty($pwd) || empty($email))
-        {
-            header("Location: ../change_email.php?change=emptyfields");
+		if (empty($uid) || empty($pwd) || empty($email))
+		{
+			header("Location: ../change_email.php?change=emptyfields");
 			exit();
-        }
-        else
-        {
-            $sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
-			$resCheck = $stmt->fetchColumn();
-			
+		}
+		else
+		{
+			try
+			{
+				$sql = "SELECT COUNT(*) FROM users WHERE user_uid=:username";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindParam(":username", $uid);
+				$stmt->execute();
+				$resCheck = $stmt->fetchColumn();
+			}
+			catch (PDOException $var)
+			{
+				echo $var->getMessage();
+			}	
 			if ($resCheck == 0)
 			{
 				header("Location: ../change_email.php?change=wrong_username");
 				exit();
-            }
-            else
-            {
-                try
+			}
+			else
+			{
+				try
 				{
-					$sql = "SELECT * FROM users WHERE user_uid='$uid'";
+					$sql = "SELECT * FROM users WHERE user_uid=:username";
 					$check = $conn->prepare($sql);
+					$stmt->bindParam(":username", $uid);
 					$check->execute();
 					$row = $check->fetch(PDO::FETCH_ASSOC);
 				}
@@ -46,23 +54,30 @@
 					{
 						header("Location: ../change_email.php?change=incorrect_pwd");
 						exit();
-                    }
-                    else if ($hashpwdcheck == TRUE)
-                    {
-                        $sql = "UPDATE users SET user_email='$email' WHERE user_uid='$uid'";
-						$stmt = $conn->prepare($sql);
-						$stmt->execute();
-						header("Location: ../index.php?change=successfull");
-						exit();
-                    }
-                }
-            }
-        }
-    }
-    else
-    {
-        header("Location: ../change_pwd.php?change=error");
+					}
+					else if ($hashpwdcheck == TRUE)
+					{
+						try
+						{
+							$sql = "UPDATE users SET user_email='$email' WHERE user_uid='$uid'";
+							$stmt = $conn->prepare($sql);
+							$stmt->execute();
+							header("Location: ../index.php?change=successfull");
+							exit();
+						}
+						catch (PDOException $var)
+						{
+							echo $var->getMessage();
+						}	
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		header("Location: ../change_pwd.php?change=error");
 		exit();
-    }
+	}
 
 ?>
