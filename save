@@ -1,9 +1,0 @@
-<?php
-
-    if($_SESSION['u_notif'] == 1)
-    {
-        echo '
-        '
-    }
-
-?>

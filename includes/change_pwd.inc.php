@@ -15,11 +15,18 @@
 		}
 		else
 		{
-			$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
-			$resCheck = $stmt->fetchColumn();
-			
+			try
+			{
+				$sql = "SELECT COUNT(*) FROM users WHERE user_uid=:username";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindParam(":username", $uid);
+				$stmt->execute();
+				$resCheck = $stmt->fetchColumn();
+			}
+			catch (PDOException $var)
+			{
+				echo $var->getMessage();
+			}	
 			if ($resCheck == 0)
 			{
 				header("Location: ../change_pwd.php?change=wrong_username");
@@ -29,8 +36,9 @@
 			{
 				try
 				{
-					$sql = "SELECT * FROM users WHERE user_uid='$uid'";
+					$sql = "SELECT * FROM users WHERE user_uid=:username";
 					$check = $conn->prepare($sql);
+					$check->bindParam(":username", $uid);
 					$check->execute();
 					$row = $check->fetch(PDO::FETCH_ASSOC);
 				}
@@ -49,12 +57,21 @@
 					}
 					else if ($hashpwdcheck == TRUE)
 					{
-						$hashpwd = password_hash($newpwd, PASSWORD_DEFAULT);
-						$sql = "UPDATE users SET user_pwd='$hashpwd' WHERE user_uid='$uid'";
-						$stmt = $conn->prepare($sql);
-						$stmt->execute();
-						header("Location: ../index.php?change=successfull");
-						exit();
+						try
+						{
+							$hashpwd = password_hash($newpwd, PASSWORD_DEFAULT);
+							$sql = "UPDATE users SET user_pwd=:hashpwd WHERE user_uid=:username";
+							$stmt = $conn->prepare($sql);
+							$stmt->bindParam(":hashpwd", $hashpwd);
+							$stmt->bindParam(":username", $uid);
+							$stmt->execute();
+							header("Location: ../index.php?change=successfull");
+							exit();
+						}
+						catch (PDOException $var)
+						{
+							echo $var->getMessage();
+						}	
 					}
 				}
 			}
