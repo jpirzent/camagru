@@ -17,12 +17,18 @@
 		}
 		else
 		{
-
-			$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$olduid'";
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
-			$resCheck = $stmt->fetchColumn();
-
+			try
+			{
+				$sql = "SELECT COUNT(*) FROM users WHERE user_uid=:username";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindParam(":username", $olduid);
+				$stmt->execute();
+				$resCheck = $stmt->fetchColumn();
+			}
+			catch (PDOException $var)
+			{
+				echo $var->getMessage();
+			}	
 			if ($resCheck == 0)
 			{
 				header("Location: ../signup.php?login=error");
@@ -30,11 +36,11 @@
 			}
 			else
 			{
-
 				try
 				{
-					$sql = "SELECT * FROM users WHERE user_uid='$olduid'";
+					$sql = "SELECT * FROM users WHERE user_uid=:username";
 					$check = $conn->prepare($sql);
+					$check->bindParam(":username", $olduid);
 					$check->execute();
 					$row = $check->fetch(PDO::FETCH_ASSOC);
 				}
@@ -52,12 +58,21 @@
 					}
 					else if ($hashpwdcheck == TRUE)
 					{
-						$sql = "UPDATE users SET user_uid='$newuid' WHERE user_uid='$olduid'";
-						$stmt = $conn->prepare($sql);
-						$stmt->execute();
-						$_SESSION['uid'] = $newuid;
-						header("Location: ../change_username.php?change=successfull");
-						exit();
+						try
+						{
+							$sql = "UPDATE users SET user_uid=:nuid WHERE user_uid=:ouid";
+							$stmt = $conn->prepare($sql);
+							$stmt->bindParam(":nuid", $newuid);
+							$stmt->bindParam(":ouid", $olduid);
+							$stmt->execute();
+							$_SESSION['uid'] = $newuid;
+							header("Location: ../user_home.php?change=successfull");
+							exit();
+						}
+						catch (PDOException $var)
+						{
+							echo $var->getMessage();
+						}	
 					}
 				}
 			}
