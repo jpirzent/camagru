@@ -9,7 +9,6 @@
 	<title>Camagru</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
-	<script src="./display-image.js" type="text/javascript"></script>
 </head>
 <body>
 	
