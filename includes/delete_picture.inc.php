@@ -8,16 +8,44 @@
 		$imgID = $_GET['img'];
 		
 		//Delete the image
-		$sql = "DELETE FROM images WHERE image_id='$imgID'";
-		$conn->exec($sql);
+		try
+		{
+			$sql = "DELETE FROM images WHERE image_id=:imgID";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":imgID", $imgID);
+			$stmt->execute();
+		}
+		catch (PDOException $var)
+		{
+			echo $var->getMessage();
+		}
 
 		//Delete all asociated comments
-		$sql = "DELETE FROM comments WHERE com_imgID='$imgID'";
-		$conn->exec($sql);
+		try
+		{
+			$sql = "DELETE FROM comments WHERE com_imgID=:imgID";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":imgID", $imgID);
+			$stmt->execute();
+		}
+		catch (PDOException $var)
+		{
+			echo $var->getMessage();
+		}
 
 		//Delete all associated likes
-		$sql = "DELETE FROM likes WHERE likes_imgID='$imgID'";
-		$conn->exec($sql);
+		try
+		{
+			$sql = "DELETE FROM likes WHERE likes_imgID=:imgID";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":imgID", $imgID);
+			$stmt->execute();
+		}
+		catch (PDOException $var)
+		{
+			echo $var->getMessage();
+		}
+		
 		header("Location: ../user_home.php?DeleteSuccess");
 		exit();	
 	}
