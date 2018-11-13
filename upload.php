@@ -27,12 +27,11 @@
 				?>
 			</ul>
 			<div class="login-div">
-			<a href="user_home.php"></a>
 				<?php
 					if (isset($_SESSION['u_id']))
 					{
 						echo '<form action="includes/logout.inc.php" method="POST">
-								<button type="submit" name="submit">Logout</button>
+								<button type="submit" name="submit" class="logout-button">Logout</button>
 								<a href="user_home.php" class="user_a">User</a>
 							</form>';
 					}
@@ -73,7 +72,7 @@ Select an image to upload
 	<input type="button" value="UPLOAD" id="img-upload" onclick="save_img()">
 </div>
 
-<div class="previous-imgs">
+<div class="previous-imgs" id="prev">
 	<h1>Previous Posts</h1>
 <?php
 	include_once 'includes/dbh.inc.php';

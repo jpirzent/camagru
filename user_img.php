@@ -70,8 +70,8 @@
             echo '<img class="user-img" src="data:image/jpeg;base64,'.$img.'">';
 			echo '<a href="includes/delete_picture.inc.php?img='.$imgID.'" class="delete-button">Delete Post</a>';
 			echo '<a href="includes/delete_editing.inc.php?img='.$imgID.'" class="delete-button">Delete Editing</a>';
-			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
-			echo '<p class="gallery-date">no. of Likes: '.$likes.'</p>';
+			echo '<p class="user_date">Posted: '.$imgDate.'</p>';
+			echo '<p class="user_date">no. of Likes: '.$likes.'</p>';
 			echo '<div class="comment-layout">';
 
 			foreach ($row2 as $result)

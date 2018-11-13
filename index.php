@@ -65,7 +65,7 @@
         echo '<hr class="gallery-hr">';
     }
 	echo '<div class="pagination">';
-	for ($x = 0; $x <= $pagination; $x++)
+	for ($x = 0; $x < $pagination; $x++)
 	{
 		$temp = $x + 1;
 		echo '<a href="index.php?curr='.$x.'">'.$temp.'</a>';

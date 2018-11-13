@@ -11,7 +11,7 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
+time, mark, audio {
     margin:0;
     padding:0;
     border:0;
@@ -130,7 +130,7 @@ a {
 /*Header bar styling*/
 .header-bar {
 	margin: 0 auto;
-	width: 1850px;
+	width: 95%;
 }
 
 header nav {
@@ -150,7 +150,7 @@ header nav ul li {
 
 header nav ul li a {
 	font-family: 'Times New Roman';
-	font-size: 18px;
+	font-size: 15px;
 	color: black;
 	line-height: 63px;
 }
@@ -166,16 +166,16 @@ header .login-div {
 header .login-div form {
 	float: left;
 	padding-top: 15px;
+	margin-left: -14%;
 }
 
 header .login-div form input {
 	float: left;
-	width: 140px;
+	width: 30%;
 	height: 30px;
 	padding: 0px 10px;
 	margin-right: 10px;
 	border: none;
-	border-radius: 23px;
 	text-align: center;
 	background-color: whitesmoke;
 	font-family: 'Times New Roman';
@@ -186,11 +186,9 @@ header .login-div form input {
 
 header .login-div form button {
 	float: left;
-	width: 60px;
+	width: 15%;
 	height: 30px;
-	margin-right: 10px;
 	border: none;
-	border-radius: 23px;
 	background-color: coral;
 	font-family: 'Times New Roman';
 	font-size: 14px;
@@ -205,11 +203,11 @@ header .login-div form button:hover {
 
 header .login-div a {
 	display: block;
-	width: 120px;
+	width: 15%;
 	height: 60px;
-
 	border: none;
 	float: left;
+	margin-right: 5%;
 	background-color: coral;
 	font-family: 'Times New Roman';
 	font-size: 14px;
@@ -224,34 +222,48 @@ header .login-div a:hover {
 
 header .login-div .user_a
 {
-	display: block;
-	width: 30px;
-	height: 60px;
-	margin-top: -15px;
+	width: 100%;
+	height: 30px;
+	margin-top: -37.5%;
+	margin-right: 10%;
+	margin-left: 20%;
 	border: none;
-	border-radius: 23px;
 	float: left;
 	background-color: coral;
 	font-family: 'Times New Roman';
 	font-size: 14px;
 	color: black;
-	line-height: 63px;
+	line-height: 32px;
+	cursor: pointer;
+}
+
+header .login-div .logout-button
+{
+	float: left;
+	width: 100%;
+	height: 30px;
+	border: none;
+	background-color: coral;
+	font-family: 'Times New Roman';
+	margin-left: -60%;
+	margin-right: 10%;
+	font-size: 14px;
+	color: black;
+	line-height: 30px;
 	cursor: pointer;
 }
 
 
 
-
-
 /*Header for each page*/
 .header-container {
-	padding-top: 40px;
+	padding-top: 5%;
 }
 
 .header-container h2 {
 	font-family: 'Times New Roman';;
 	text-decoration: overline;
-	font-size: 50px;
+	font-size: 150%;
 	color: coral;
 	line-height: 50px;
 	text-align: center;
@@ -260,7 +272,7 @@ header .login-div .user_a
 
 /*styling for Sign-up*/
 .signup-form {
-	width: 400px;
+	width: 30%;
 	margin: 0 auto;
 	padding-top: 30px;
 }
@@ -281,7 +293,7 @@ header .login-div .user_a
 
 .signup-form button {
 	display: block;
-	width: 30%;
+	width: 50%;
 	height: 30px;
 	margin: 0 auto;
 	border: none;
@@ -306,18 +318,17 @@ header .login-div .user_a
 {
 	width: 95%;
 	height: 35px;
-	border: 1px solid black;
-	margin-left: 50px;
+	margin-left: 5%;
 	margin-top: 20px;
 }
 
 .modify-user a
 {
-	width: 300px;
+	width: 47.5%;
 	height: 100%;
 	background-color: coral;
 	color: black;
-	font-size: 30px;
+	font-size: 150%;
 	float: left;
 	border-radius: 23px;
 	text-align: center;
@@ -336,7 +347,7 @@ header .login-div .user_a
 /*change_details.php styling*/
 .change-form
 {
-	width: 400px;
+	width: 30%;
 	margin: 0 auto;
 	padding-top: 150px;
 }
@@ -348,7 +359,7 @@ header .login-div .user_a
 	margin-top: 50px;
 	background-color: grey;
 	color: black;
-	font-size: 30px;
+	font-size: 120%;
 	float: left;
 	border: none;
 	border-radius: 23px;
@@ -543,43 +554,44 @@ header .login-div .user_a
 	color: black;
 }
 
-
-
 /*webcam.php styling*/
 #video
 {
 	display: block;
-	margin-left: 30px;
+	/* margin-left: 2.5%; */
 	z-index: 100;
+	width: 100%    !important;
+    height: auto   !important;
 }
 
 #canvas
 {
 	display: block;
-	margin-left: 30px;
+	/* margin-left: 2.5%; */
 	z-index: 100;
+	width: 100%    !important;
+    height: auto   !important;
 }
 
 .video-class
 {
-	width: 700px;
-	height: 550px;
-	margin-left: 600px;
+	width: 50%;
+	height: 50%;
+	margin-left: 10%;
 	margin-top: 50px;
 	background-color: coral;
 }
 
 .video-class input
 {
-	width: 200px;
+	width: 50%;
 	height: 40px;
 	margin-top: 5px;
 	border: none;
 	background-color: black;
 	font-family: 'Times New Roman';
-	font-size: 30px;
+	font-size: 75%;
 	color: coral;
-	line-height: 30px;
 	cursor: pointer;
 }
 
@@ -591,31 +603,31 @@ header .login-div .user_a
 
 .img-metal
 {
-	width: 250px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
-	margin-left: 400px;
-	margin-top: 20px;
+	margin-left: 35%;
+	margin-top: 1%;
 	display: none;
 }
 
 .img-yolo
 {
-	width: 200px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
-	margin-left: 50px;
-	margin-top: 50px;
+	margin-left: 1%;
+	margin-top: 1px;
 	display: none;
 }
 
 .img-emoji
 {
-	width: 180px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
-	margin-left: 450px;
-	margin-top: 300px;
+	margin-left: 35%;
+	margin-top: 20%;
 	display: none;
 }
 
@@ -632,24 +644,25 @@ header .login-div .user_a
 
 .overlay-imgs
 {
-	width: 50%;
-	height: 200px;
+	width: 45%;
+	height: 30%;
 	background-color: coral;
-	margin-left: 476.25px;
+	margin-left: 25%;
 	margin-top: 20px;
 }
 
 .overlay-imgs img
 {
-	width: 150px;
-	margin-left: 125px;
+	width: 60%;
+	margin-left: 40%;
+	margin-right: 20%;
 }
 
 
 .overlay-imgs h1
 {
 	text-align: center;
-	font-size: 35px;
+	font-size: 100%;
 	font-family: 'Times New Roman';
 	text-decoration: overline;
 	padding-top: 5px;
@@ -659,30 +672,33 @@ header .login-div .user_a
 {
 	background-color: coral;
 	border: none;
+	display: inline;
 }
 
 .previous-imgs
 {
-	width: 200px;
+	width: 15%;
 	background-color: coral;
 	float: right;
-	margin-right: 300px;
-	margin-top: -500px;
+	position: relative;
+	margin-right: 5%;
+	margin-top: -40%;
 	margin-bottom: 30px;
 }
 
 .previous-imgs img
 {
-	width: 150px;
-	height: 150px;
-	margin-left: 25px;
+	width: 95%;
+	height: 100%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
 	margin-top: 15px;
 }
 
 .previous-imgs h1
 {
 	text-align: center;
-	font-size: 35px;
+	font-size: 100%;
 	font-family: 'Times New Roman';
 	text-decoration: overline;
 	padding-top: 5px;
@@ -692,19 +708,16 @@ header .login-div .user_a
 
 
 
-
-
-
 /*upload.php styling*/
 .upload-form
 {
-	width: 700px;
-	height: 550px;
-	background-color: coral;
-	margin-left: 600px;
+	width: 50%;
+	height: 50%;
+	margin-left: 10%;
 	margin-top: 50px;
+	background-color: coral;
 	font-family: 'Times New Roman';
-	font-size: 30px;
+	font-size: 100%;
 	text-align: center;
 	text-decoration: underline;
 	color: #454545;
@@ -713,7 +726,7 @@ header .login-div .user_a
 
 .upload-form input
 {
-	width: 200px;
+	width: 30%;
 	text-decoration: none;
 	border: none;
 	display: block;
@@ -721,9 +734,9 @@ header .login-div .user_a
 	color: black;
 	cursor: pointer;
 	font-family: 'Times New Roman';
-	font-size: 18px;
-	margin-left: 225px;
-	margin-top: 150px;
+	font-size: 50%;
+	margin-left: 35%;
+	margin-top: 25%;
 	z-index: 99;
 }
 
@@ -735,42 +748,41 @@ header .login-div .user_a
 
 .upload-img
 {
-	width: 640px;
-	height: 480px;
-	border: none;
 	display: block;
-	margin-left: 30px;
-	margin-top: 20px;
+	margin-left: 2.5%;
+	margin-top: 1%;
 	z-index: 100;
+	width: 95%;
+	height: 45%;
 }
 
 .upload-metal
 {
-	width: 250px;
-	margin-left: 400px;
-	margin-top: 20px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
+	margin-left: 35%;
+	margin-top: 1%;
 	display: none;
 }
 
 .upload-yolo
 {
-	width: 200px;
-	margin-left: 50px;
-	margin-top: 50px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
+	margin-left: 1%;
+	margin-top: 1px;
 	display: none;
 }
 
 .upload-emoji
 {
-	width: 180px;
-	margin-left: 450px;
-	margin-top: 300px;
+	width: 15%;
 	position: absolute;
 	z-index: 101;
+	margin-left: 35%;
+	margin-top: 20%;
 	display: none;
 }
 
@@ -778,8 +790,9 @@ header .login-div .user_a
 /*index.php styling*/
 .gallery-img
 {
-	height: 450px;
-	margin-left: 652.5px;
+	/* height: 450px; */
+	width: 50%;
+	margin-left: 25%;
 	margin-top: 20px;
 	border: none;
 	z-index: 100;
@@ -789,7 +802,7 @@ header .login-div .user_a
 {
 	font-family: 'Times New Roman';;
 	text-decoration: overline;
-	font-size: 30px;
+	font-size: 130%;
 	color: coral;
 	margin-top: 50px;
 	text-align: center;
@@ -799,8 +812,8 @@ header .login-div .user_a
 {
 	color: coral;
 	margin-top: 5px;
-	margin-left: 1200px;
-	font-size: 20px;
+	margin-left: 70%;
+	font-size: 100%;
 }
 
 .gallery-hr
@@ -808,48 +821,21 @@ header .login-div .user_a
 	background-color: coral;
 	border-color: coral;
 	width: 90%;
-	margin-left: 100px;
+	margin-left: 5%;
 }
 
 .gallery-upvote
 {
 	float: right;
-	width: 60px;
-	height: 60px;
-	margin-top: -300px;
-	margin-right: 600px;
-}
-
-.feed-metal
-{
-	width: 250px;
-	margin-left: 815px;
-	margin-top: 200px;
-	position: absolute;
-	z-index: 101;
-}
-
-.feed-yolo
-{
-	width: 160px;
-	margin-left: 900px;
-	margin-top: 20px;
-	position: absolute;
-	z-index: 101;
-}
-
-.feed-emoji
-{
-	width: 180px;
-	margin-left: 890px;
-	margin-top: 180px;
-	position: absolute;
-	z-index: 101;
+	width: 15%;
+	/* height: 60px; */
+	margin-top: -30%;
+	margin-right: 10%;
 }
 
 .pagination
 {
-	margin-left: 300px;
+	margin-left: 10%;
 }
 
 .pagination a
@@ -857,11 +843,11 @@ header .login-div .user_a
 	margin-top: 20px;
 	color: coral;
     float: left;
-    padding: 8px 50px;
+    padding: 8% 10%;
     text-decoration: none;
 	transition: background-color .3s;
 	font-family: 'Times New Roman';
-	font-size: 25px;
+	font-size: 100%;
 }
 
 .pagination a:hover
@@ -873,15 +859,15 @@ header .login-div .user_a
 .comment-form
 {
 	background-color: coral;
-	width: 900px;
+	width: 45%;
 	height: 125px;
-	margin-left: 500px;
+	margin-left: 27.5%;
 	margin-top: 10px;
 }
 
 .comment-form input
 {
-	width: 200px;
+	width: 50%;
 	text-decoration: none;
 	border: none;
 	display: block;
@@ -889,8 +875,8 @@ header .login-div .user_a
 	color: black;
 	cursor: pointer;
 	font-family: 'Times New Roman';
-	font-size: 18px;
-	margin-left: 350px;
+	font-size: 100%;
+	margin-left: 25%;
 	margin-top: 25px;
 }
 
@@ -902,11 +888,11 @@ header .login-div .user_a
 
 .comment-form textarea
 {
-	margin-left: 60px;
+	margin-left: 5%;
 	margin-top: 10px;
 	font-family: 'Times New Roman';
-	font-size: 18px;
-	width: 771px;
+	font-size: 100%;
+	width: 90%;
 	height: 50px;
 	border: none;
 	background-color: whitesmoke;
@@ -915,8 +901,8 @@ header .login-div .user_a
 .comment-layout
 {
 	background-color: gray;
-	width: 900px;
-	margin-left: 500px;
+	width: 45%;
+	margin-left: 27.5%;
 	margin-top: 20px;
 }
 
@@ -925,7 +911,7 @@ header .login-div .user_a
 	padding-top: 15px;
 	padding-left: 25px;
 	text-decoration: overline;
-	font-size: 20px;
+	font-size: 125%;
 	font-family: 'Times New Roman';
 	color: coral;
 }
@@ -961,7 +947,7 @@ header .login-div .user_a
 	padding-bottom: 15px;
 	padding-right: 20px;
 	font-size: 20px;
-	text-decoration-color: black;
+	/* text-decoration-color: black; */
 }
 
 
@@ -970,18 +956,21 @@ header .login-div .user_a
 /*user_img.php styling*/
 .user-img
 {
-	height: 500px;
-	margin-left: 400px;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 	margin-top: 20px;
 	border: none;
 }
 
 .delete-button
 {
-	font-size: 30px;
+	font-size: 100%;
+	width: 10%;
 	color: coral;
-	margin-left: 50px;
-	display: inline;
+	/* margin-right: 2.5%; */
+	margin-left: 74.25%;
+	display: block;
 	padding: 3px 3px 3px 3px;
 }
 
@@ -989,4 +978,20 @@ header .login-div .user_a
 {
 	background-color: coral;
 	color: #454545;
+}
+
+.user_date
+{
+	color: coral;
+	margin-top: 5px;
+	margin-left: 74.5%;
+	font-size: 100%;
+}
+
+
+
+#response
+{
+	color: coral;
+	font-size: 50%;
 }

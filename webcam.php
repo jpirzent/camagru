@@ -27,12 +27,11 @@
 				?>
 			</ul>
 			<div class="login-div">
-			<a href="user_home.php"></a>
 				<?php
 					if (isset($_SESSION['u_id']))
 					{
 						echo '<form action="includes/logout.inc.php" method="POST">
-								<button type="submit" name="submit">Logout</button>
+								<button type="submit" name="submit" class="logout-button">Logout</button>
 								<a href="user_home.php" class="user_a">User</a>
 							</form>';
 					}
@@ -72,8 +71,8 @@
 			<img src="./imgs/metal.png" alt="metal" title="metal" class="img-metal" id="metal">
 			<img src="./imgs/yolo.png" alt="yolo" title="yolo" class="img-yolo" id="yolo">
 			<img src="./imgs/emoji.png" alt="emoji" title="emoji" class="img-emoji" id="emoji">
-			<video id="video" width="640" height="480">Video is Loading</video>
-			<canvas id="canvas" style="display:none;" width="640" height="480">Canvas Is Loading</canvas>
+			<video id="video">Video is Loading</video>
+			<canvas id="canvas" style="display:none;">Canvas Is Loading</canvas>
 			<input type="button" value="Take the Shot!!" id="snap">
 			<input type="button" value="Cancel" id="delete_snap">
 			<input type="button" value="Save" id="save_img" onclick="save_img()">

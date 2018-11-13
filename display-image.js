@@ -2,23 +2,11 @@
 window.onload = function() {
 	document.getElementById("upload-img").style.display = "none";
 	document.getElementById("img-upload").style.display = "none";
+	document.getElementById("prev").style.display = "none";
 }
 
 function displayimg(e)
 {
-	/* var img = event.target.files[0];
-	var reader = new FileReader();
-	
-	var imgtag = document.getElementById("myimage");
-	imgtag.style.display = "block";
-	imgtag.title = img.name;
-
-	reader.onload = function(event)
-	{
-		imgtag.src = event.target.result;
-	}
-	reader.readAsDataURL(img) */
-
 	var reader = new FileReader();
 	var canvas = document.getElementById("upload-img");
 	var ctx = canvas.getContext('2d');
@@ -38,6 +26,7 @@ function displayimg(e)
 	document.querySelector("#upload").style.display = "none";
 	document.querySelector("#img-upload").style.display = "block";
 	document.querySelector("#upload-img").style.display = "block";
+	document.getElementById("prev").style.display = "block";
 }
 
 function display_img(num)

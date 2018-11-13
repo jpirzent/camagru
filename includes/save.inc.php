@@ -21,12 +21,22 @@
 		{
 			$sticker = imagecreatefrompng("../imgs/metal.png");
 			$img = imagecreatefromstring($img);
-			$size = getimagesize("../imgs/metal.png");
+
+			$width = imagesx($sticker);
+			$height = imagesy($sticker);
+
+			$new_h = imagesy($img) / 2;
+			$new_w = imagesy($img) * $width / $height / 2;
+
+			$sticker_resize = imagecreatetruecolor($new_w, $new_h);
+			imagealphablending($sticker_resize, false);
+			imagesavealpha($sticker_resize, true);
+			imagecopyresampled($sticker_resize, $sticker, 0, 0, 0, 0, $new_w, $new_h, $width, $height);
 
 			imagealphablending($img, true);
 			imagesavealpha($img, true);
-			imagesavealpha($sticker, true);
-			imagecopy($img, $sticker, 400, 20, 0, 0, $size[0], $size[1]);
+			imagecopy($img, $sticker_resize, imagesx($img) - $new_w, 0, 0, 0, $new_w, $new_h);
+			
 			imagepng($img, 'save.png');
 			$img = file_get_contents('save.png');
 		}
@@ -34,12 +44,22 @@
 		{
 			$sticker = imagecreatefrompng("../imgs/yolo.png");
 			$img = imagecreatefromstring($img);
-			$size = getimagesize("../imgs/yolo.png");
+
+			$width = imagesx($sticker);
+			$height = imagesy($sticker);
+
+			$new_h = imagesy($img) / 4;
+			$new_w = imagesy($img) * $width / $height / 4;
+
+			$sticker_resize = imagecreatetruecolor($new_w, $new_h);
+			imagealphablending($sticker_resize, false);
+			imagesavealpha($sticker_resize, true);
+			imagecopyresampled($sticker_resize, $sticker, 0, 0, 0, 0, $new_w, $new_h, $width, $height);
 
 			imagealphablending($img, true);
 			imagesavealpha($img, true);
-			imagesavealpha($sticker, true);
-			imagecopy($img, $sticker, 50, 50, 0, 0, $size[0], $size[1]);
+			imagecopy($img, $sticker_resize, 0, 0, 0, 0, $new_w, $new_h);
+			
 			imagepng($img, 'save.png');
 			$img = file_get_contents('save.png');
 		}
@@ -47,12 +67,25 @@
 		{
 			$sticker = imagecreatefrompng("../imgs/emoji.png");
 			$img = imagecreatefromstring($img);
-			$size = getimagesize("../imgs/emoji.png");
+
+			$width = imagesx($sticker);
+			$height = imagesy($sticker);
+
+			$img_w = imagesx($img);
+			$img_h = imagesy($img);
+
+			$new_h = imagesy($img) / 2;
+			$new_w = imagesy($img) * $width / $height / 2;
+
+			$sticker_resize = imagecreatetruecolor($new_w, $new_h);
+			imagealphablending($sticker_resize, false);
+			imagesavealpha($sticker_resize, true);
+			imagecopyresampled($sticker_resize, $sticker, 0, 0, 0, 0, $new_w, $new_h, $width, $height);
 
 			imagealphablending($img, true);
 			imagesavealpha($img, true);
-			imagesavealpha($sticker, true);
-			imagecopy($img, $sticker, 450, 300, 0, 0, $size[0], $size[1]);
+			imagecopy($img, $sticker_resize, $img_w - $new_w, $img_h - $new_h, 0, 0, $new_w, $new_h);
+			
 			imagepng($img, 'save.png');
 			$img = file_get_contents('save.png');
 		}
