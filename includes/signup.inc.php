@@ -30,11 +30,19 @@
 				}
 				else
 				{
-					$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
+					try
+					{
+						$sql = "SELECT COUNT(*) FROM users WHERE user_uid=:username";
+						$stmt = $conn->prepare($sql);
+						$stmt->bindParam(":username", $uid);
+						$stmt->execute();
+						$resCheck = $stmt->fetchColumn();
+					}
+					catch (PDOException $var)
+					{
+						echo $var->getMessage();
+					}
 
-					$stmt = $conn->prepare($sql);
-					$stmt->execute();
-					$resCheck = $stmt->fetchColumn();
 					if ($resCheck > 0)
 					{
 						header("Location: ../signup.php?signup=invalid-username");
@@ -48,16 +56,24 @@
 							$key = mt_rand(1000,9999);
 							$key .= $uid;
 							$hkey = hash('whirlpool', $key);
-							$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd, user_key) VALUES ('$first', '$last', '$email', '$uid', '$hashpwd', '$hkey');";
+							$sql = "INSERT INTO users (user_first, user_last, user_email, user_uid, user_pwd, user_key) VALUES (:firstn, :lastn, :email, :username, :hashpwd, :hkey);";
 							try
 							{
-								$conn->exec($sql);
+								$stmt = $conn->prepare($sql);
+								$stmt->bindParam(":firstn", $first);
+								$stmt->bindParam(":lastn", $last);
+								$stmt->bindParam(":email", $email);
+								$stmt->bindParam(":username", $uid);
+								$stmt->bindParam(":hashpwd", $hashpwd);
+								$stmt->bindParam(":hkey", $hkey);
+								$stmt->execute();
 								echo "new record created successfully";
 							}
 							catch(PDOException $e)
 							{
 								echo $sql . "<br>" . $e->getMessage();
 							}
+							
 							$subject = "Account Verification";
 							$msg = "
 							<html>
