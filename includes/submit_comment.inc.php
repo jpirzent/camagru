@@ -14,23 +14,49 @@
 			header("Location: ../view_img.php?image=".$imgID);
 			exit();	
 		}
-		$sql = "INSERT INTO comments (com_imgID, com_text, com_commenter) VALUES ('$imgID', '$comment', '$commenter');";
-		$conn->exec($sql);
+		try
+		{
+			$sql = "INSERT INTO comments (com_imgID, com_text, com_commenter) VALUES (:imgID, :comment, :commenter);";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":imgID", $imgID);
+			$stmt->bindParam(":comment", $comment);
+			$stmt->bindParam(":commenter", $commenter);
+			$stmt->execute();
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}	
 
-		$sql = "SELECT * FROM images WHERE image_id=$imgID";
-
-		$stmt = $conn->prepare($sql);
-		$stmt->execute();
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		try
+		{
+			$sql = "SELECT * FROM images WHERE image_id=:imgID";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":imgID", $imgID);
+			$stmt->execute();
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
 
 		if ($row)
 		{
 			$uid = $row['image_uid'];
 			
-			$sql = "SELECT * FROM users WHERE user_uid = '$uid'";
-			$stmt = $conn->prepare($sql);
-			$stmt->execute();
-			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			try
+			{
+				$sql = "SELECT * FROM users WHERE user_uid = :username";
+				$stmt = $conn->prepare($sql);
+				$stmt->bindParam(":username", $uid);
+				$stmt->execute();
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			}
+			catch(PDOException $e)
+			{
+				echo $sql . "<br>" . $e->getMessage();
+			}	
 			if ($row)
 			{
 				if ($row['user_notif'] == 1)
