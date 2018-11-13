@@ -550,7 +550,6 @@ header .login-div .user_a
 {
 	display: block;
 	margin-left: 30px;
-	transform: scale(-1, 1);
 	z-index: 100;
 }
 
@@ -558,7 +557,6 @@ header .login-div .user_a
 {
 	display: block;
 	margin-left: 30px;
-	transform: scale(-1, 1);
 	z-index: 100;
 }
 
@@ -591,33 +589,33 @@ header .login-div .user_a
 	color: black;
 }
 
-.img-cig
+.img-metal
 {
 	width: 250px;
 	position: absolute;
 	z-index: 101;
-	margin-left: 125px;
-	margin-top: 240px;
+	margin-left: 400px;
+	margin-top: 20px;
 	display: none;
 }
 
-.img-hat
+.img-yolo
 {
-	width: 160px;
+	width: 200px;
 	position: absolute;
 	z-index: 101;
-	margin-left: 225px;
-	margin-top: 0px;
+	margin-left: 50px;
+	margin-top: 50px;
 	display: none;
 }
 
-.img-glasses
+.img-emoji
 {
 	width: 180px;
 	position: absolute;
 	z-index: 101;
-	margin-left: 225px;
-	margin-top: 200px;
+	margin-left: 450px;
+	margin-top: 300px;
 	display: none;
 }
 
@@ -726,6 +724,7 @@ header .login-div .user_a
 	font-size: 18px;
 	margin-left: 225px;
 	margin-top: 150px;
+	z-index: 99;
 }
 
 .upload-form input:hover
@@ -736,40 +735,40 @@ header .login-div .user_a
 
 .upload-img
 {
-	width: 450px;
-	height: 450px;
+	width: 640px;
+	height: 480px;
 	border: none;
 	display: block;
-	margin-left: 125px;
+	margin-left: 30px;
 	margin-top: 20px;
 	z-index: 100;
 }
 
-.upload-cig
+.upload-metal
 {
 	width: 250px;
-	margin-left: 200px;
-	margin-top: 200px;
-	position: absolute;
-	z-index: 101;
-	display: none;
-}
-
-.upload-hat
-{
-	width: 160px;
-	margin-left: 280px;
+	margin-left: 400px;
 	margin-top: 20px;
 	position: absolute;
 	z-index: 101;
 	display: none;
 }
 
-.upload-glasses
+.upload-yolo
+{
+	width: 200px;
+	margin-left: 50px;
+	margin-top: 50px;
+	position: absolute;
+	z-index: 101;
+	display: none;
+}
+
+.upload-emoji
 {
 	width: 180px;
-	margin-left: 270px;
-	margin-top: 180px;
+	margin-left: 450px;
+	margin-top: 300px;
 	position: absolute;
 	z-index: 101;
 	display: none;
@@ -779,11 +778,11 @@ header .login-div .user_a
 /*index.php styling*/
 .gallery-img
 {
-	width: 450px;
 	height: 450px;
-	margin-left: 725px;
+	margin-left: 652.5px;
 	margin-top: 20px;
 	border: none;
+	z-index: 100;
 }
 
 .gallery-h1
@@ -821,6 +820,54 @@ header .login-div .user_a
 	margin-right: 600px;
 }
 
+.feed-metal
+{
+	width: 250px;
+	margin-left: 815px;
+	margin-top: 200px;
+	position: absolute;
+	z-index: 101;
+}
+
+.feed-yolo
+{
+	width: 160px;
+	margin-left: 900px;
+	margin-top: 20px;
+	position: absolute;
+	z-index: 101;
+}
+
+.feed-emoji
+{
+	width: 180px;
+	margin-left: 890px;
+	margin-top: 180px;
+	position: absolute;
+	z-index: 101;
+}
+
+.pagination
+{
+	margin-left: 300px;
+}
+
+.pagination a
+{
+	margin-top: 20px;
+	color: coral;
+    float: left;
+    padding: 8px 50px;
+    text-decoration: none;
+	transition: background-color .3s;
+	font-family: 'Times New Roman';
+	font-size: 25px;
+}
+
+.pagination a:hover
+{
+	background-color: #ddd;
+}
 
 /*view_img.php styling*/
 .comment-form
@@ -923,7 +970,6 @@ header .login-div .user_a
 /*user_img.php styling*/
 .user-img
 {
-	width: 500px;
 	height: 500px;
 	margin-left: 400px;
 	margin-top: 20px;
@@ -935,11 +981,12 @@ header .login-div .user_a
 	font-size: 30px;
 	color: coral;
 	margin-left: 50px;
+	display: inline;
+	padding: 3px 3px 3px 3px;
 }
 
 .delete-button:hover
 {
 	background-color: coral;
 	color: #454545;
-	padding: 3px 3px 3px 3px;
 }
