@@ -14,11 +14,18 @@ if (isset($_POST['submit']))
 	}
 	else
 	{
-		
-		$sql = "SELECT COUNT(*) FROM users WHERE user_uid='$uid'";
-		$stmt = $conn->prepare($sql);
-		$stmt->execute();
-		$resCheck = $stmt->fetchColumn();
+		try
+		{
+			$sql = "SELECT COUNT(*) FROM users WHERE user_uid=:username";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":username", $uid);
+			$stmt->execute();
+			$resCheck = $stmt->fetchColumn();
+		}
+		catch (PDOException $var)
+		{
+			echo $var->getMessage();
+		}
 
 		if ($resCheck == 0)
 		{
@@ -29,8 +36,9 @@ if (isset($_POST['submit']))
 		{
 			try
 			{
-				$sql = "SELECT * FROM users WHERE user_uid='$uid'";
+				$sql = "SELECT * FROM users WHERE user_uid=:username";
 				$check = $conn->prepare($sql);
+				$check->bindParam(":username", $uid);
 				$check->execute();
 				$row = $check->fetch(PDO::FETCH_ASSOC);
 			}
