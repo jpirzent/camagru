@@ -5,10 +5,19 @@
 	if (isset($_GET['key']))
 	{
 		$key = $_GET['key'];
-		$sql = "SELECT COUNT(*) FROM users WHERE user_key='$key'";
-		$stmt = $conn->prepare($sql);
-		$stmt->execute();
-		$resCheck = $stmt->fetchColumn();
+		
+		try
+		{
+			$sql = "SELECT COUNT(*) FROM users WHERE user_key=:hkey";
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(":hkey", $key);
+			$stmt->execute();
+			$resCheck = $stmt->fetchColumn();
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
 
 		if ($resCheck == 0)
 		{
@@ -19,8 +28,9 @@
 		{
 			try
 			{
-				$sql = "SELECT * FROM users WHERE user_key='$key'";
+				$sql = "SELECT * FROM users WHERE user_key=:hkey";
 				$check = $conn->prepare($sql);
+				$check->bindParam(":hkey", $key);
 				$check->execute();
 				$row = $check->fetch(PDO::FETCH_ASSOC);
 			}
@@ -28,13 +38,22 @@
 			{
 				echo $var->getMessage();
 			}
+
 			if ($row)
 			{
-				$sql = "UPDATE users SET user_verified='1' WHERE user_key='$key'";
-				$stmt = $conn->prepare($sql);
-				$stmt->execute();
-				header("Location: ../index.php?verification=success");
-				exit();
+				try
+				{
+					$sql = "UPDATE users SET user_verified='1' WHERE user_key=:hkey";
+					$stmt = $conn->prepare($sql);
+					$stmt->bindParam(":hkey", $key);
+					$stmt->execute();
+					header("Location: ../index.php?verification=success");
+					exit();
+				}
+				catch(PDOException $e)
+				{
+					echo $sql . "<br>" . $e->getMessage();
+				}
 			}
 		}
 	}
