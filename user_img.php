@@ -9,22 +9,45 @@
 	{
 		include_once 'includes/dbh.inc.php';
 
-		$imgID = $_GET['image'];
-		$sql = "SELECT * FROM images WHERE image_id='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row = $check->fetch(PDO::FETCH_ASSOC);
-		
-		$sql = "SELECT COUNT(*) FROM likes WHERE likes_imgID='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row1 = $check->fetchColumn();
-		
+		try
+		{
+			$imgID = $_GET['image'];
+			$sql = "SELECT * FROM images WHERE image_id=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row = $check->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
 
-		$sql = "SELECT * FROM comments WHERE com_imgID='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row2 = $check->fetchAll(PDO::FETCH_ASSOC);
+		try
+		{
+			$sql = "SELECT COUNT(*) FROM likes WHERE likes_imgID=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row1 = $check->fetchColumn();
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}	
+
+		try
+		{
+			$sql = "SELECT * FROM comments WHERE com_imgID=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row2 = $check->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}	
 		if (!$row)
 		{
 			echo "no image found";
@@ -32,7 +55,6 @@
 		else
 		{
 			$imgData = $row['image_img'];
-			$imgName = $row['image_uid'];
 			$imgDate = $row['image_created'];
 			$img = str_replace(" ", "+", $imgData);
 
@@ -46,7 +68,8 @@
 			}
 
             echo '<img class="user-img" src="data:image/jpeg;base64,'.$img.'">';
-            echo '<a href="includes/delete_picture.inc.php?img='.$imgID.'" class="delete-button">Delete Post</a>';
+			echo '<a href="includes/delete_picture.inc.php?img='.$imgID.'" class="delete-button">Delete Post</a>';
+			echo '<a href="includes/delete_editing.inc.php?img='.$imgID.'" class="delete-button">Delete Editing</a>';
 			echo '<p class="gallery-date">Posted: '.$imgDate.'</p>';
 			echo '<p class="gallery-date">no. of Likes: '.$likes.'</p>';
 			echo '<div class="comment-layout">';
@@ -55,7 +78,9 @@
 			{
 				$commenter = $result['com_commenter'];
 				$comment = $result['com_text'];
-				
+				$comment = addslashes($comment);
+				$commenter = addslashes($commenter);
+
 				echo '<h1>';
 				echo $commenter;
 				echo ':</h1>';
