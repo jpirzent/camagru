@@ -22,10 +22,20 @@
 	include_once 'includes/dbh.inc.php';
 	
 	$uid = $_SESSION['u_uid'];
-	$sql = "SELECT * FROM images WHERE image_uid='$uid'";
-	$feed = $conn->prepare($sql);
-	$feed->execute();
-	$res = $feed->fetchALL(PDO::FETCH_ASSOC);
+	
+	try
+	{
+		$sql = "SELECT * FROM images WHERE image_uid=:user";
+		$feed = $conn->prepare($sql);
+		$feed->bindParam(":user", $uid);
+		$feed->execute();
+		$res = $feed->fetchALL(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e)
+	{
+		echo $sql . "<br>" . $e->getMessage();
+	}
+
 	if ($res)
 	{
 		foreach ($res as $row)
