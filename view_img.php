@@ -8,23 +8,47 @@
 	if (isset($_GET['image']))
 	{
 		include_once 'includes/dbh.inc.php';
-
 		$imgID = $_GET['image'];
-		$sql = "SELECT * FROM images WHERE image_id='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row = $check->fetch(PDO::FETCH_ASSOC);
-		
-		$sql = "SELECT COUNT(*) FROM likes WHERE likes_imgID='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row1 = $check->fetchColumn();
-		
 
-		$sql = "SELECT * FROM comments WHERE com_imgID='$imgID'";
-		$check = $conn->prepare($sql);
-		$check->execute();
-		$row2 = $check->fetchAll(PDO::FETCH_ASSOC);
+		try
+		{
+			$sql = "SELECT * FROM images WHERE image_id=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row = $check->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
+		
+		try
+		{
+			$sql = "SELECT COUNT(*) FROM likes WHERE likes_imgID=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row1 = $check->fetchColumn();
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
+		
+		try
+		{
+			$sql = "SELECT * FROM comments WHERE com_imgID=:imgID";
+			$check = $conn->prepare($sql);
+			$check->bindParam(":imgID", $imgID);
+			$check->execute();
+			$row2 = $check->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $e)
+		{
+			echo $sql . "<br>" . $e->getMessage();
+		}
+		
 		if (!$row)
 		{
 			echo "no image found";
@@ -33,6 +57,7 @@
 		{
 			$imgData = $row['image_img'];
 			$imgName = $row['image_uid'];
+			$imgName = addslashes($imgName);
 			$imgDate = $row['image_created'];
 			$img = str_replace(" ", "+", $imgData);
 			if ($row1 == 0)
@@ -52,7 +77,7 @@
 			echo '<form action="includes/submit_comment.inc.php" id="comment-form" class="comment-form" method="post">';
 			echo '<textarea name="comment" form="comment-form" placeholder="Enter Your Comment Here"></textarea>';
 			echo "<input type='hidden' value='$imgID' name='image'>";
-			echo '<input type="submit">';
+			echo '<input type="submit" value="Submit">';
 			echo '</form>';
 			echo '<div class="comment-layout">';
 
@@ -60,6 +85,8 @@
 			{
 				$commenter = $result['com_commenter'];
 				$comment = $result['com_text'];
+				$comment = addslashes($comment);
+				$commenter = addslashes($commenter);
 				
 				echo '<h1>';
 				echo $commenter;

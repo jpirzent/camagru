@@ -8,10 +8,10 @@
 	if (isset($_GET['image']))
 	{
 		include_once 'includes/dbh.inc.php';
+		$imgID = $_GET['image'];
 
 		try
 		{
-			$imgID = $_GET['image'];
 			$sql = "SELECT * FROM images WHERE image_id=:imgID";
 			$check = $conn->prepare($sql);
 			$check->bindParam(":imgID", $imgID);
