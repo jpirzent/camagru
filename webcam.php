@@ -57,9 +57,9 @@
 	</div>
 <div class="overlay-imgs">
 	<h1>Filters</h1>
-	<button onclick="display_img(1)"><img src="./imgs/cigarette.png" alt="cig" title="cigarette"></button>
-	<button onclick="display_img(2)"><img src="./imgs/hat.png" alt="hat" title="hat"></button>
-	<button onclick="display_img(3)"><img src="./imgs/glasses.png" alt="glasses" title="glasses"></button>
+	<button onclick="display_img(1)"><img src="./imgs/metal.png" alt="metal" title="metal"></button>
+	<button onclick="display_img(2)"><img src="./imgs/yolo.png" alt="yolo" title="yolo"></button>
+	<button onclick="display_img(3)"><img src="./imgs/emoji.png" alt="emoji" title="emoji"></button>
 </div>
 
 
@@ -69,9 +69,9 @@
 	if (isset($_SESSION['u_id']))
 	{
 		echo '<div class="video-class">
-			<img src="./imgs/cigarette.png" alt="cig" title="cigarette" class="img-cig" id="cig">
-			<img src="./imgs/hat.png" alt="hat" title="hat" class="img-hat" id="hat">
-			<img src="./imgs/glasses.png" alt="glasses" title="glasses" class="img-glasses" id="glasses">
+			<img src="./imgs/metal.png" alt="metal" title="metal" class="img-metal" id="metal">
+			<img src="./imgs/yolo.png" alt="yolo" title="yolo" class="img-yolo" id="yolo">
+			<img src="./imgs/emoji.png" alt="emoji" title="emoji" class="img-emoji" id="emoji">
 			<video id="video" width="640" height="480">Video is Loading</video>
 			<canvas id="canvas" style="display:none;" width="640" height="480">Canvas Is Loading</canvas>
 			<input type="button" value="Take the Shot!!" id="snap">
@@ -95,11 +95,20 @@
 <?php
 	include_once 'includes/dbh.inc.php';
 	
-	$uid = $_SESSION['u_uid'];
-	$sql = "SELECT * FROM images WHERE image_uid='$uid'";
-	$feed = $conn->prepare($sql);
-	$feed->execute();
-	$res = $feed->fetchALL(PDO::FETCH_ASSOC);
+	$uid = $_SESSION['u_uid']; 
+	try
+	{
+		$sql = "SELECT * FROM images WHERE image_uid=:user";
+		$feed = $conn->prepare($sql);
+		$feed->bindParam(":user", $uid);
+		$feed->execute();
+		$res = $feed->fetchALL(PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e)
+	{
+		echo $sql . "<br>" . $e->getMessage();
+	}
+
 	if ($res)
 	{
 		foreach ($res as $row)
@@ -119,6 +128,9 @@
 
 
 </section>
+<div id="response">
+
+</div>
 <?php
 	include_once 'footer.php';
 ?>
