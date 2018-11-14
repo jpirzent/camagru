@@ -98,6 +98,11 @@
 			echo '</div>';
 		}
 	}
+	else
+	{
+		header("Location: index.php?error");
+		exit();
+	}
 
 ?>
 
