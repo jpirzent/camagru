@@ -2,6 +2,11 @@
 	 session_start();
 ?>
 
+<?php
+	if (isset($_SESSION['u_uid']))
+	{
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,4 +137,14 @@
 </div>
 <?php
 	include_once 'footer.php';
+?>
+
+
+<?php
+	}
+	else
+	{
+		header("Location: index.php?PleaseLoginIn");
+		exit();
+	}
 ?>
