@@ -91,7 +91,7 @@
 	}
 	else
 	{
-		header("Location: ../index.php?error");
+		header("Location: ../index.php?comment=PleaseLoginIn");
 		exit();
 	}
 
