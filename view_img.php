@@ -85,7 +85,7 @@
 			{
 				$commenter = $result['com_commenter'];
 				$comment = $result['com_text'];
-				$comment = addslashes($comment);
+				$comment = htmlentities($comment);
 				$commenter = addslashes($commenter);
 				
 				echo '<h1>';

@@ -67,7 +67,7 @@
 
 	try
 	{
-		$sql = "SELECT * FROM images LIMIT $offset, 5";
+		$sql = "SELECT * FROM images ORDER BY image_created DESC LIMIT $offset, 5";
 		$check = $conn->prepare($sql);
 		$check->execute();
 		$result = $check->fetchAll(PDO::FETCH_ASSOC);
@@ -118,7 +118,6 @@
 		echo '<a href="index.php?curr='.$x.'">'.$temp.'</a>';
 	}
 	echo '</div>';
-
 ?>
 
 

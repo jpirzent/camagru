@@ -231,7 +231,7 @@ header .login-div a:hover {
 
 header .login-div .user_a
 {
-	width: 100%;
+	width: 90%;
 	height: 30px;
 	margin-top: -37.5%;
 	margin-right: 10%;
@@ -337,7 +337,7 @@ header .login-div .logout-button
 	height: 100%;
 	background-color: coral;
 	color: black;
-	font-size: 150%;
+	font-size: 125%;
 	float: left;
 	border-radius: 23px;
 	text-align: center;
@@ -1002,5 +1002,6 @@ header .login-div .logout-button
 #response
 {
 	color: coral;
-	font-size: 50%;
+	font-size: 100%;
+	margin-left: 10%;
 }

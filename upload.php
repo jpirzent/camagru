@@ -1,12 +1,10 @@
 <?php
-	if (isset($_SESSION['u_uid']))
-	{
+	 session_start();
 ?>
 
-
-
 <?php
-	 session_start();
+	if (isset($_SESSION['u_uid']))
+	{
 ?>
 
 <!DOCTYPE html>

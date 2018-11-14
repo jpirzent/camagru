@@ -66,6 +66,12 @@
 							$stmt->bindParam(":ouid", $olduid);
 							$stmt->execute();
 							$_SESSION['uid'] = $newuid;
+
+							$sql = "UPDATE images SET image_uid=:nuid WHERE image_uid=:ouid";
+							$stmt = $conn->prepare($sql);
+							$stmt->bindParam(":nuid", $newuid);
+							$stmt->bindParam(":ouid", $olduid);
+							$stmt->execute();
 							header("Location: ../user_home.php?change=successfull");
 							exit();
 						}

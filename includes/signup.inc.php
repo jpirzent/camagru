@@ -74,6 +74,8 @@
 								echo $sql . "<br>" . $e->getMessage();
 							}
 							
+							$link = $_SERVER['HTTP_HOST'];
+							$link .= str_replace("signup", "verify", $_SERVER['SCRIPT_NAME']);
 							$subject = "Account Verification";
 							$msg = "
 							<html>
@@ -82,7 +84,7 @@
 							</head>
 							<body>
 							<p>Please follow the link bellow to Verify your Account</p><br />
-							<a href='http://localhost:8080/camagru/includes/verify.inc.php?key=".$hkey."'>Verify Account</a>
+							<a href='http://".$link."?key=".$hkey."'>Verify Account</a>
 							</body>
 							</html>
 							";
