@@ -2,7 +2,7 @@
 
 	session_start();
 
-	if (isset($_GET['img']) && is_numeric($_GET['img']))
+	if (isset($_GET['img']) && is_numeric($_GET['img']) && isset($_SESSION['u_uid']))
 	{
 		include_once 'dbh.inc.php';
 		$imgID = $_GET['img'];

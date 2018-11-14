@@ -1,3 +1,8 @@
+<?php
+	if (isset($_SESSION['u_uid']))
+	{
+?>
+
 
 <?php
 	include_once 'header.php';
@@ -54,4 +59,14 @@
 
 <?php
 	include_once 'footer.php';
+?>
+
+
+<?php
+	}
+	else
+	{
+		header("Location: index.php?PleaseLoginIn");
+		exit();
+	}
 ?>

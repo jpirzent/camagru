@@ -1,4 +1,47 @@
 <?php
+
+	$DB_DSN = "localhost";
+	$DB_USER  = "root";
+	$DB_PASSWORD = "012345";
+	$DB_NAME = "loginsystem";
+
+	try
+	{	
+		$conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	}
+	catch (PDOException $var)
+	{
+		try
+		{
+			$sql = "CREATE DATABASE IF NOT EXISTS loginsystem";
+			$conn = new PDO("mysql:host=$DB_DSN", $DB_USER, $DB_PASSWORD);
+			$create = $conn->prepare($sql);
+			$create->execute();
+			
+			include_once 'config/setup.con.php';
+			$conn->query("use `$DB_NAME`");
+			cr_users($conn);
+			cr_likes($conn);
+			cr_images($conn);
+			cr_comments($conn);
+			echo "<script type='text/javascript'>alert('Database Created Successfully');</script>";
+		}
+		catch(PDOException $e)
+		{
+			echo "<script type='text/javascript'>alert(". $e->getMessage().");</script>";
+		}
+
+	}
+
+?>
+
+
+
+
+
+
+<?php
 	include_once 'header.php';
 ?>
 	<section class="header-container">
@@ -49,7 +92,11 @@
 	$pagination = $posts / 5;
 	if (!$result)
 	{
-		echo "no image found";
+		echo '<section class="header-container">
+				<div class="header-bar">
+					<h2>No image found</h2>
+				</div>
+			</section>';
 	}
 	else foreach ($result as $row)
     {

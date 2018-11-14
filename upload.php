@@ -1,4 +1,11 @@
 <?php
+	if (isset($_SESSION['u_uid']))
+	{
+?>
+
+
+
+<?php
 	 session_start();
 ?>
 
@@ -111,4 +118,13 @@ Select an image to upload
 </div>
 <?php
 	include_once 'footer.php';
+?>
+
+<?php
+	}
+	else
+	{
+		header("Location: index.php?PleaseLoginIn");
+		exit();
+	}
 ?>

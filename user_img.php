@@ -91,6 +91,11 @@
 			echo '</div>';
 		}
 	}
+	else
+	{
+		header("Location: index.php?PleaseLoginIn");
+		exit();
+	}
 
 ?>
 <?php

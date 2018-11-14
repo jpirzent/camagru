@@ -1,5 +1,7 @@
 <?php
-	include_once 'header.php';
+	if (isset($_SESSION['u_uid']))
+	{
+		include_once 'header.php';
 ?>
 <section class="header-container">
 	<div class="header-bar">
@@ -24,5 +26,11 @@
 ?>
 
 <?php
-	include_once 'footer.php';
+		include_once 'footer.php';
+	}
+	else
+	{
+		header("Location: index.php?PleaseLoginIn");
+		exit();
+	}
 ?>
